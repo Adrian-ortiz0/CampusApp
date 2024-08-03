@@ -1,110 +1,144 @@
 {
-  "estudiantes": {
-    "123": {
-      "nombre": "adrian",
-      "edad": 22,
-      "celular": "358456987",
-      "estado": "reprobado",
-      "pruebas": {
-        "Nota cognitiva": 30,
-        "Nota de habilidades": 100
-      },
-      "notas": {},
-      "trainer": "",
-      "ruta": ""
+    "estudiantes": {
+        "123": {
+            "nombre": "adrian",
+            "edad": 22,
+            "celular": "358456987",
+            "estado": "reprobado",
+            "pruebas": {
+                "Nota cognitiva": 30,
+                "Nota de habilidades": 100
+            },
+            "notas": {},
+            "trainer": "",
+            "ruta": ""
+        },
+        "122": {
+            "nombre": "nose",
+            "edad": 45,
+            "celular": "332555",
+            "estado": "Cursando",
+            "pruebas": {
+                "Nota cognitiva": 30,
+                "Nota de habilidades": 82
+            },
+            "notas": {},
+            "trainer": "adrian",
+            "ruta": "NetCore"
+        },
+        "144": {
+            "nombre": "julian",
+            "edad": 85,
+            "celular": "3149895",
+            "estado": "Cursando",
+            "pruebas": {
+                "Nota cognitiva": 80,
+                "Nota de habilidades": 90
+            },
+            "notas": {},
+            "trainer": "jholber",
+            "ruta": "NodeJs"
+        },
+        "10": {
+            "nombre": "david",
+            "edad": 20,
+            "celular": "3173109599",
+            "estado": "Cursando",
+            "pruebas": {
+                "Nota cognitiva": 80,
+                "Nota de habilidades": 79
+            },
+            "notas": {},
+            "trainer": "marino",
+            "ruta": "Java"
+        }
     },
-    "122": {
-      "nombre": "nose",
-      "edad": 45,
-      "celular": "332555",
-      "estado": "Cursando",
-      "pruebas": {
-        "Nota cognitiva": 30,
-        "Nota de habilidades": 82
-      },
-      "notas": {},
-      "trainer": "adrian",
-      "ruta": "NetCore"
+    "trainers": {
+        "ruta_trainers": {
+            "Java": [
+                {
+                    "marino": [
+                        "david"
+                    ]
+                },
+                {
+                    "julian": []
+                }
+            ],
+            "NetCore": [
+                {
+                    "adrian": []
+                }
+            ],
+            "NodeJs": [
+                {
+                    "jholber": []
+                }
+            ]
+        },
+        "1": {
+            "nombre": "marino",
+            "horario": "6:30am - 9:00am",
+            "ruta": "Java",
+            "salon": "sputnik"
+        },
+        "2": {
+            "nombre": "jholber",
+            "horario": "9:00am - 1:00pm",
+            "ruta": "NodeJs",
+            "salon": "apollo"
+        },
+        "3": {
+            "nombre": "adrian",
+            "horario": "9:00am - 1:00pm",
+            "ruta": "NetCore",
+            "salon": "kepler"
+        },
+        "4": {
+            "nombre": "julian",
+            "horario": "2:00pm - 6:00pm",
+            "ruta": "Java",
+            "salon": ""
+        }
     },
-    "144": {
-      "nombre": "julian",
-      "edad": 85,
-      "celular": "3149895",
-      "estado": "Cursando",
-      "pruebas": {
-        "Nota cognitiva": 80,
-        "Nota de habilidades": 90
-      },
-      "notas": {},
-      "trainer": "jholber",
-      "ruta": "NodeJs"
-    }
-  },
-  "trainers": {
-    "ruta_trainers": {
-      "Java": ["marino", "julian"],
-      "NetCore": ["adrian"],
-      "NodeJs": ["jholber"]
+    "salones": {
+        "kepler": {
+            "6:30am - 9:00am": {
+                "profesor": ""
+            },
+            "9:00am - 1:00pm": {
+                "profesor": "adrian"
+            },
+            "2:00pm - 6:00pm": {
+                "profesor": ""
+            }
+        },
+        "sputnik": {
+            "6:30am - 9:00am": {
+                "profesor": "marino"
+            },
+            "9:00am - 1:00pm": {
+                "profesor": ""
+            },
+            "2:00pm - 6:00pm": {
+                "profesor": ""
+            }
+        },
+        "apollo": {
+            "6:30am - 9:00am": {
+                "profesor": ""
+            },
+            "9:00am - 1:00pm": {
+                "profesor": "jholber"
+            },
+            "2:00pm - 6:00pm": {
+                "profesor": ""
+            }
+        }
     },
-    "1": {
-      "nombre": "marino",
-      "horario": "6:30am - 9:00am",
-      "ruta": "Java",
-      "salon": "sputnik"
-    },
-    "2": {
-      "nombre": "jholber",
-      "horario": "9:00am - 1:00pm",
-      "ruta": "NodeJs",
-      "salon": "apollo"
-    },
-    "3": {
-      "nombre": "adrian",
-      "horario": "9:00am - 1:00pm",
-      "ruta": "NetCore",
-      "salon": "kepler"
-    },
-    "4": {
-      "nombre": "julian",
-      "horario": "2:00pm - 6:00pm",
-      "ruta": "Java",
-      "salon": ""
-    }
-  },
-  "salones": {
-    "kepler": {
-      "6:30am - 9:00am": {
-        "profesor": ""
-      },
-      "9:00am - 1:00pm": {
-        "profesor": "adrian"
-      },
-      "2:00pm - 6:00pm": {
-        "profesor": ""
-      }
-    },
-    "sputnik": {
-      "6:30am - 9:00am": {
-        "profesor": "marino"
-      },
-      "9:00am - 1:00pm": {
-        "profesor": ""
-      },
-      "2:00pm - 6:00pm": {
-        "profesor": ""
-      }
-    },
-    "apollo": {
-      "6:30am - 9:00am": {
-        "profesor": ""
-      },
-      "9:00am - 1:00pm": {
-        "profesor": "jholber"
-      },
-      "2:00pm - 6:00pm": {
-        "profesor": ""
-      }
-    }
-  },
-  "rutas": ["Java", "NodeJs", "NetCore"]
+    "rutas": [
+        "Java",
+        "NodeJs",
+        "NetCore"
+    ]
 }
