@@ -1,0 +1,109 @@
+{
+    "estudiantes": {
+        "123": {
+            "nombre": "adrian",
+            "edad": 22,
+            "celular": "358456987",
+            "estado": "reprobado",
+            "pruebas": {
+                "Nota cognitiva": 30,
+                "Nota de habilidades": 100
+            },
+            "notas": {},
+            "trainer": "",
+            "ruta": ""
+        },
+        "122": {
+            "nombre": "nose",
+            "edad": 45,
+            "celular": "332555",
+            "estado": "inscrito",
+            "pruebas": {
+                "Nota cognitiva": 30,
+                "Nota de habilidades": 82
+            },
+            "notas": {},
+            "trainer": "",
+            "ruta": ""
+        },
+        "144": {
+            "nombre": "julian",
+            "edad": 85,
+            "celular": "3149895",
+            "estado": "inscrito",
+            "pruebas": {},
+            "notas": {},
+            "trainer": "",
+            "ruta": ""
+        }
+    },
+    "trainers": {
+        "1": {
+            "nombre": "marino",
+            "horario": "6:30am - 9:00am",
+            "ruta": "Java",
+            "salon": "sputnik"
+        },
+        "2": {
+            "nombre": "jholber",
+            "horario": "9:00am - 1:00pm",
+            "ruta": "NodeJs",
+            "salon": "apollo"
+        },
+        "3": {
+            "nombre": "adrian",
+            "horario": "9:00am - 1:00pm",
+            "ruta": "NetCore",
+            "salon": "kepler"
+        }
+    },
+    "salones": {
+        "kepler": {
+            "6:30am - 9:00am": {
+                "cupo": [],
+                "profesor": ""
+            },
+            "9:00am - 1:00pm": {
+                "cupo": [],
+                "profesor": "adrian"
+            },
+            "2:00pm - 6:00pm": {
+                "cupo": [],
+                "profesor": ""
+            }
+        },
+        "sputnik": {
+            "6:30am - 9:00am": {
+                "cupo": [],
+                "profesor": "marino"
+            },
+            "9:00am - 1:00pm": {
+                "cupo": [],
+                "profesor": ""
+            },
+            "2:00pm - 6:00pm": {
+                "cupo": [],
+                "profesor": ""
+            }
+        },
+        "apollo": {
+            "6:30am - 9:00am": {
+                "cupo": [],
+                "profesor": ""
+            },
+            "9:00am - 1:00pm": {
+                "cupo": [],
+                "profesor": "jholber"
+            },
+            "2:00pm - 6:00pm": {
+                "cupo": [],
+                "profesor": ""
+            }
+        }
+    },
+    "rutas": [
+        "Java",
+        "NodeJs",
+        "NetCore"
+    ]
+}
