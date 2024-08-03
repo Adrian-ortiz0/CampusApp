@@ -23,8 +23,8 @@
                 "Nota de habilidades": 82
             },
             "notas": {},
-            "trainer": "",
-            "ruta": ""
+            "trainer": "adrian",
+            "ruta": "NetCore"
         },
         "144": {
             "nombre": "julian",
@@ -38,6 +38,18 @@
         }
     },
     "trainers": {
+        "ruta_trainers": {
+            "Java": [
+                "marino",
+                "julian"
+            ],
+            "NetCore": [
+                "adrian"
+            ],
+            "NodeJs": [
+                "jholber"
+            ]
+        },
         "1": {
             "nombre": "marino",
             "horario": "6:30am - 9:00am",
@@ -55,6 +67,12 @@
             "horario": "9:00am - 1:00pm",
             "ruta": "NetCore",
             "salon": "kepler"
+        },
+        "4": {
+            "nombre": "julian",
+            "horario": "2:00pm - 6:00pm",
+            "ruta": "Java",
+            "salon": ""
         }
     },
     "salones": {

@@ -84,7 +84,7 @@ def menu_administradores():
             print("1. Aprobar campers (Realizar pruebas)")
             print("2. Contratar trainers")
             print("3. Asignar trainers a rutas")
-            print("4. Asignar campers a trainers")
+            print("4. Asignar campers a rutas y trainers")
             print("5. Eliminar campers")
             print("6. Asignar salones")
             print("7. Salir")
@@ -406,11 +406,44 @@ def asignar_campers():
     print("Bienvenido al sistema de asignacion de campers!")
     while True:
         try:
-            elec = int(input("Deseas continuar? (1.Si/2.No): "))
+            elec = int(input("Deseas continuar? (1.Si/2.No): "))      
             if elec == 1:
-                for ruta in data["rutas"]:
-                    print(f"-{ruta}")
-                
+                documento = input("Ingrese el documento del camper: ")
+                if documento in data["estudiantes"] and data["estudiantes"][documento]["estado"] == "Aprobado":  
+                    for ruta in data["rutas"]:
+                        print(f"-{ruta}")
+                    ruta_elegida = input("Ingrese el nombre exacto de la ruta que desee asignar: ")
+                    if ruta_elegida in data["rutas"]:
+                        data["estudiantes"][documento]["ruta"] = ruta_elegida
+                        print("Ruta asignada!")
+                        guardar_datos(data)
+                        for trainer in data["trainers"]["ruta_trainers"][ruta_elegida]:
+                            print(f"- {trainer}")
+                        trainer_elegido = input("Escribe el nombre del trainer que recibira el camper: ")
+                        if trainer_elegido in data["trainers"]["ruta_trainers"][ruta_elegida]:
+                            data["estudiantes"][documento]["trainer"] = trainer_elegido
+                            clear()
+                            print("Trainer asignado!")
+                            time.sleep(2)
+                            guardar_datos(data)
+                            break
+                        else:
+                            print("Escribiste mal el nombre del trainer o el trainer no existe!")
+                            continue
+                    else:
+                        print("Esa ruta no existe!")
+                else:
+                    clear()
+                    print("Ese camper no existe o no esta aprobado!")
+                    time.sleep(1)
+                    continue
+            elif elec == 2:
+                clear()
+                print("Saliendo...")
+                time.sleep(2)
+                break
+            else:
+                print("Elige una opcion valida!")                        
         except ValueError:
             print("Ingrese un valor valido!")
             continue
@@ -427,7 +460,8 @@ def asignar_rutas():
                 if documento not in data["trainers"]:
                     print("Ese trainer no existe!")
                 else:
-                    while True: 
+                    while True:
+                        nombre_trainer = data["trainers"][documento]["nombre"] 
                         for ruta in data["rutas"]:
                             print(f"- {ruta}")
                         ruta = input("Escribe el nombre de la ruta a asignar: ")
@@ -440,7 +474,11 @@ def asignar_rutas():
                                 break
                             else:
                                 data["trainers"][documento]["ruta"] = ruta
+                                data["trainers"]["ruta_trainers"][ruta].append(nombre_trainer)
+                                clear() 
                                 print("Ruta asignada exitosamente!")
+                                time.sleep(1)
+                                wait_for_keypress()
                                 guardar_datos(data)
                                 break
             elif elec == 2:
