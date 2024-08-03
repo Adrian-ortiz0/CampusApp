@@ -111,12 +111,28 @@ def menu_administradores():
 def menu_trainers():
     data = leer_datos()
     identificacion = input("Ingresa tu documento, trainer: ")
-    if identificacion in data["trainers"]:   
-        print(f"Bienvenido al menu trainer {data['trainers'][identificacion]['nombre']}!")
-        print("******************************************")
-        print("1. Ver estudiantes")
-        print("2. Probar estudiantes")
-        print("3. Salir")
+    if identificacion in data["trainers"]:
+        while True:   
+            print(f"Bienvenido al menu trainer {data['trainers'][identificacion]['nombre']}!")
+            print("******************************************")
+            print("1. Ver estudiantes")
+            print("2. Probar estudiantes")
+            print("3. Salir")
+            try:
+                opt = int(input("Ingresa una opcion: "))
+                if opt == 1:
+                    ver_estudiantes(identificacion)
+                elif opt == 2:
+                    probar_estudiantes(identificacion)
+                elif opt == 3:
+                    print("Saliendo...")
+                    break
+                else:
+                    print("Opcion no valida!")
+                    continue
+            except ValueError:
+                print("Valor no valido!")
+                continue
     else:
         print("No existe ese documento!")
 
@@ -504,6 +520,29 @@ def asignar_rutas():
         except ValueError:
             print("Favor ingresar un valor numerico!")
             continue
-
+        
+def ver_estudiantes(identificacion):
+    data = leer_datos()
+    while True:   
+        print(f"Bienvenido trainer {data['trainers'][identificacion]['nombre']}!")
+        elec = int(input("Desea ver sus estudiantes? (1.Si/2.No)?: "))
+        try:
+            if elec == 1:
+                ruta = data["trainers"][identificacion]["ruta"]
+                nombre_trainer = data["trainers"][identificacion]["nombre"]
+                for trainer in data["trainers"]["ruta_trainers"][ruta]:
+                    if nombre_trainer in trainer:
+                        estudiantes = trainer[nombre_trainer]
+                        for estudiante_nombre in estudiantes:
+                            print(f"- {estudiante_nombre}")
+            elif elec == 2:
+                clear()
+                print("Saliendo...")
+                time.sleep(2)
+                break    
+        except ValueError:
+            print("Ingrese un valor valido!")
+            continue
+        
     
 menu_principal()

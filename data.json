@@ -67,12 +67,12 @@
             ],
             "NetCore": [
                 {
-                    "adrian": []
+                    "adrian": ["nose"]
                 }
             ],
             "NodeJs": [
                 {
-                    "jholber": []
+                    "jholber": ["julian"]
                 }
             ]
         },
