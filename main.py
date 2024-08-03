@@ -114,6 +114,9 @@ def menu_trainers():
     if identificacion in data["trainers"]:   
         print(f"Bienvenido al menu trainer {data['trainers'][identificacion]['nombre']}!")
         print("******************************************")
+        print("1. Ver estudiantes")
+        print("2. Probar estudiantes")
+        print("3. Salir")
     else:
         print("No existe ese documento!")
 
@@ -422,6 +425,7 @@ def asignar_campers():
                         trainer_elegido = input("Escribe el nombre del trainer que recibira el camper: ")
                         if trainer_elegido in data["trainers"]["ruta_trainers"][ruta_elegida]:
                             data["estudiantes"][documento]["trainer"] = trainer_elegido
+                            data["estudiantes"][documento]["estado"] = "Cursando"
                             clear()
                             print("Trainer asignado!")
                             time.sleep(2)
