@@ -139,13 +139,26 @@ def menu_trainers():
 def menu_principal():
     data = leer_datos()
     while True:
-        print("Bienvenido a campuslands, elige una opcion!")
-        print("*******************************************")
+        print("#    ####                                                  ## #")
+        print("#   ##  ##                                                #### #")
+        print("#  ##        ####    ##  ##   ######   ##  ##    #####   ##  ##   ######   ###### #")
+        print("#  ##           ##   #######   ##  ##  ##  ##   ##       ##  ##    ##  ##   ##  ## #")
+        print("#  ##        #####   ## # ##   ##  ##  ##  ##    #####   ######    ##  ##   ##  ## #")
+        print("#   ##  ##  ##  ##   ##   ##   #####   ##  ##        ##  ##  ##    #####    ##### #")
+        print("#    ####    #####   ##   ##   ##       ######  ######   ##  ##    ##       ## #")
+        print("#                             ####                                ####     #### #")
+        print("")
+        print("************************************************************************************")
         print("1. Incribirse")
+        print("")
         print("2. Ingresar como usuario")
+        print("")
         print("3. Ingresar como administrador")
+        print("")
         print("4. Ingresar como trainer")
+        print("")
         print("5. Salir")
+        print("")
         
         try:   
             opt = int(input("Ingresa una opcion: "))
