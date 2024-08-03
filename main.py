@@ -443,7 +443,10 @@ def asignar_campers():
                         trainer_encontrado = False
                         for trainer in data["trainers"]["ruta_trainers"][ruta_elegida]:
                             if trainer_elegido in trainer:
-                                trainer[trainer_elegido].append(data["estudiantes"][documento]["nombre"])
+                                trainer[trainer_elegido].append({
+                                    "id": documento,
+                                    "nombre": data["estudiantes"][documento]["nombre"]
+                                })
                                 data["estudiantes"][documento]["trainer"] = trainer_elegido
                                 data["estudiantes"][documento]["estado"] = "Cursando"
                                 trainer_encontrado = True
@@ -524,25 +527,179 @@ def asignar_rutas():
 def ver_estudiantes(identificacion):
     data = leer_datos()
     while True:   
-        print(f"Bienvenido trainer {data['trainers'][identificacion]['nombre']}!")
-        elec = int(input("Desea ver sus estudiantes? (1.Si/2.No)?: "))
         try:
+            trainer_info = data['trainers'].get(identificacion)
+            if not trainer_info:
+                print("¡Identificación del entrenador no encontrada!")
+                break          
+            print(f"Bienvenido trainer {trainer_info['nombre']}!")
+            elec = int(input("¿Desea ver sus estudiantes? (1.Si/2.No)?: "))
             if elec == 1:
-                ruta = data["trainers"][identificacion]["ruta"]
-                nombre_trainer = data["trainers"][identificacion]["nombre"]
+                ruta = trainer_info["ruta"]
+                nombre_trainer = trainer_info["nombre"]         
                 for trainer in data["trainers"]["ruta_trainers"][ruta]:
                     if nombre_trainer in trainer:
                         estudiantes = trainer[nombre_trainer]
-                        for estudiante_nombre in estudiantes:
-                            print(f"- {estudiante_nombre}")
+                        if estudiantes:
+                            for estudiante in estudiantes:
+                                print(f"- ID: {estudiante['id']}, Nombre: {estudiante['nombre']}")
+                        else:
+                            print("No hay estudiantes asignados.")
+                        break          
             elif elec == 2:
                 clear()
                 print("Saliendo...")
                 time.sleep(2)
-                break    
-        except ValueError:
-            print("Ingrese un valor valido!")
-            continue
+                break
+            
+            else:
+                print("¡Elige una opción válida!")
         
-    
+        except ValueError:
+            print("¡Ingrese un valor válido!")
+            continue
+
+def probar_estudiantes(identificacion):
+    clear()
+    data = leer_datos()
+    while True:
+        try:
+            trainer_info = data['trainers'].get(identificacion)
+            if not trainer_info:
+                print("El identificador del trainer no es válido!")
+                break
+                
+            print(f"Bienvenido trainer {trainer_info['nombre']}!")
+            elec = int(input("Desea continuar? (1.Si/2.No)?: "))
+            if elec == 1:
+                print("1. Introduccion a la programacion")
+                print("2. Python")
+                print("3. Scrum y Git")
+                print("4. Javascript")
+                print("5. MySql")
+                print("6. MongoDb")
+                print("7. Backend")
+                print(f"8. {trainer_info['ruta']}")
+                modulo = int(input("En que modulo desea evaluar a sus estudiantes: "))
+                ruta = trainer_info["ruta"]
+                nombre_trainer = trainer_info["nombre"]
+                
+                for trainer in data["trainers"]["ruta_trainers"][ruta]:
+                    if nombre_trainer in trainer:
+                        estudiantes = trainer[nombre_trainer]
+                        if estudiantes:
+                            for estudiante in estudiantes:
+                                print(f"- ID: {estudiante['id']}, Nombre: {estudiante['nombre']}")
+                        else:
+                            print("No hay estudiantes asignados.")
+                        break
+                
+                estudiante = input("Ingrese el documento de identidad del estudiante a evaluar: ")
+                
+                if estudiante not in data["estudiantes"]:
+                    print("El estudiante no existe!")
+                    continue
+
+                estudiante_modulos = data["estudiantes"][estudiante].get("modulo", {})
+
+                if modulo == 1:
+                    nota_int_taller = int(input("Ingrese la nota de taller: "))
+                    nota_int_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_int_final = (nota_int_taller * 0.60 + nota_int_filtro * 0.40)
+                    estudiante_modulos["introduccion a la programacion"] = {
+                        "taller" : nota_int_taller,
+                        "filtro" : nota_int_filtro,
+                        "final" : nota_int_final  
+                    }
+                
+                elif modulo == 2 and "introduccion a la programacion" in estudiante_modulos:
+                    nota_py_taller = int(input("Ingrese la nota de taller: "))
+                    nota_py_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_py_final = (nota_py_taller * 0.60 + nota_py_filtro * 0.40)
+                    estudiante_modulos["python"] = {
+                        "taller" : nota_py_taller,
+                        "filtro" : nota_py_filtro,
+                        "final" : nota_py_final  
+                    }
+                
+                elif modulo == 3 and "python" in estudiante_modulos:
+                    nota_sg_taller = int(input("Ingrese la nota de taller: "))
+                    nota_sg_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_sg_final = (nota_sg_taller * 0.60 + nota_sg_filtro * 0.40)
+                    estudiante_modulos["scrum_git"] = {
+                        "taller" : nota_sg_taller,
+                        "filtro" : nota_sg_filtro,
+                        "final" : nota_sg_final  
+                    }
+                
+                elif modulo == 4 and "scrum_git" in estudiante_modulos:
+                    nota_js_taller = int(input("Ingrese la nota de taller: "))
+                    nota_js_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_js_final = (nota_js_taller * 0.60 + nota_js_filtro * 0.40)
+                    estudiante_modulos["javascript"] = {
+                        "taller" : nota_js_taller,
+                        "filtro" : nota_js_filtro,
+                        "final" : nota_js_final  
+                    }
+                
+                elif modulo == 5 and "javascript" in estudiante_modulos:
+                    nota_sql_taller = int(input("Ingrese la nota de taller: "))
+                    nota_sql_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_sql_final = (nota_sql_taller * 0.60 + nota_sql_filtro * 0.40)
+                    estudiante_modulos["mysql"] = {
+                        "taller" : nota_sql_taller,
+                        "filtro" : nota_sql_filtro,
+                        "final" : nota_sql_final  
+                    }
+                
+                elif modulo == 6 and "mysql" in estudiante_modulos:
+                    nota_db_taller = int(input("Ingrese la nota de taller: "))
+                    nota_db_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_db_final = (nota_db_taller * 0.60 + nota_db_filtro * 0.40)
+                    estudiante_modulos["mongodb"] = {
+                        "taller" : nota_db_taller,
+                        "filtro" : nota_db_filtro,
+                        "final" : nota_db_final  
+                    }
+                
+                elif modulo == 7 and "mongodb" in estudiante_modulos:
+                    nota_back_taller = int(input("Ingrese la nota de taller: "))
+                    nota_back_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_back_final = (nota_back_taller * 0.60 + nota_back_filtro * 0.40)
+                    estudiante_modulos["backend"] = {
+                        "taller" : nota_back_taller,
+                        "filtro" : nota_back_filtro,
+                        "final" : nota_back_final  
+                    }
+                
+                elif modulo == 8 and "backend" in estudiante_modulos:
+                    nota_core_taller = int(input("Ingrese la nota de taller: "))
+                    nota_core_filtro = int(input("Ingrese la nota de filtro: "))
+                    nota_core_final = (nota_core_taller * 0.60 + nota_core_filtro * 0.40)
+                    estudiante_modulos[trainer_info['ruta']] = {
+                        "taller" : nota_core_taller,
+                        "filtro" : nota_core_filtro,
+                        "final" : nota_core_final  
+                    }
+                
+                else:
+                    clear()
+                    print("El estudiante no ha aprobado el módulo anterior o el módulo no es válido!")
+                    time.sleep(2)
+                    continue
+                
+                data["estudiantes"][estudiante]["modulo"] = estudiante_modulos
+                guardar_datos(data)
+                clear()
+                print("Notas guardadas con éxito")
+                
+            elif elec == 2:
+                clear()
+                print("Saliendo...")
+                time.sleep(2)
+                break
+                
+        except ValueError:
+            print("Ingresa un valor válido!")
+            continue
 menu_principal()

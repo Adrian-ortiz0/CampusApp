@@ -11,7 +11,8 @@
             },
             "notas": {},
             "trainer": "",
-            "ruta": ""
+            "ruta": "",
+            "modulo": ""
         },
         "122": {
             "nombre": "nose",
@@ -23,8 +24,20 @@
                 "Nota de habilidades": 82
             },
             "notas": {},
-            "trainer": "adrian",
-            "ruta": "NetCore"
+            "trainer": "marino",
+            "ruta": "Java",
+            "modulo": {
+                "introduccion a la programacion": {
+                    "taller": 80,
+                    "filtro": 75,
+                    "final": 78.0
+                },
+                "python": {
+                    "taller": 80,
+                    "filtro": 75,
+                    "final": 78.0
+                }
+            }
         },
         "144": {
             "nombre": "julian",
@@ -37,7 +50,8 @@
             },
             "notas": {},
             "trainer": "jholber",
-            "ruta": "NodeJs"
+            "ruta": "NodeJs",
+            "modulo": ""
         },
         "10": {
             "nombre": "david",
@@ -50,7 +64,8 @@
             },
             "notas": {},
             "trainer": "marino",
-            "ruta": "Java"
+            "ruta": "Java",
+            "modulo": ""
         }
     },
     "trainers": {
@@ -58,7 +73,14 @@
             "Java": [
                 {
                     "marino": [
-                        "david"
+                        {
+                            "id": "122",
+                            "nombre": "nose"
+                        },
+                        {
+                            "id": "10",
+                            "nombre": "david"
+                        }
                     ]
                 },
                 {
@@ -67,12 +89,17 @@
             ],
             "NetCore": [
                 {
-                    "adrian": ["nose"]
+                    "adrian": []
                 }
             ],
             "NodeJs": [
                 {
-                    "jholber": ["julian"]
+                    "jholber": [
+                        {
+                            "id": "144",
+                            "nombre": "julian"
+                        }
+                    ]
                 }
             ]
         },
